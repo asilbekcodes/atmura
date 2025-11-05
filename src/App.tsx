@@ -64,7 +64,7 @@ export default function App() {
 
   // ===== Small fetch helper =====
   const api = async (path: string, init?: RequestInit) => {
-    const url = path.startsWith('http') ? path : `${process.env.NEXT_PUBLIC_API_BASE || ''}${path}`;
+    const url = path.startsWith('http') ? path : `${import.meta.env.NEXT_PUBLIC_API_BASE || ''}${path}`;
     const res = await fetch(url, { headers: { 'Content-Type': 'application/json' }, ...init });
     if (!res.ok) throw new Error(await res.text());
     return res.json();
